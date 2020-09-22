@@ -4,17 +4,136 @@ import { Link } from "gatsby"
 import Layout from "../components/layout"
 import Image from "../components/image"
 import SEO from "../components/seo"
+import Card from "../components/Card"
+import Section from "../components/section"
+import Section2 from "../components/section2"
+import Wave from "../components/Wave"
+import staticdata from "../../staticdata.json"
+import Cell from "../components/Cell"
+import styled from "styled-components"
+
+const SectionCaption = styled.p`
+  font-weight: 600;
+  font-size: 18px;
+  text-transform: uppercase;
+  color: #94A4BA;
+  text-align: center; 
+`
+const SectionCellGroup = styled.div`
+  max-width: 800px;
+  margin: 0 auto 100px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-column-gap: 20px; 
+  padding: 0 20px;
+
+  @media (max-width: 800px) {
+    grid-template-columns: repeat(1,1fr); 
+  }
+
+`
 
 const IndexPage = () => (
   <Layout>
     <SEO title="Home" />
-    <h1>Learn to design and code React apps</h1>
-    <p>Complete courses about the best tools and design systems. Prototype and build apps with React and Swift</p>
-    <p>Now go build something great.</p>
-    <div style={{ maxWidth: `300px`, marginBottom: `1.45rem` }}>
-      <Image />
+     <div className="Hero">
+      <div className = "HeroGroup">
+        <h1>Learn to <br/> design and code React apps</h1>
+        <p>Complete courses about the best tools and design systems. Prototype and build apps with React and Swift</p>
+        <Link to="/page-2/">Watch the video</Link> 
+
+        <div className="Logos">
+          <img src={require('../images/logo-sketch.png')} width="50" />
+          <img src={require('../images/logo-figma.png')} width="50" />
+          <img src={require('../images/logo-studio.png')} width="50" />
+          <img src={require('../images/logo-framer.png')} width="50" />
+          <img src={require('../images/logo-react.png')} width="50" />
+          <img src={require('../images/logo-swift.png')} width="50" />
+        </div>
+        <Wave />
+      </div>
     </div>
-    <Link to="/page-2/">Watch the video</Link> <br />
+    <div className= "Cards">
+      <h2>9 courses, more coming</h2>
+        <div className="CardGroup">
+        <Card 
+        title="React for Designers" 
+        text="20 sections"
+        image={require('../images/react-chapter.jpg')}
+        />
+        <Card 
+        title="Design Systems with Figma" 
+        text="12 sections"
+        image={require('../images/figma.jpg')}
+        />
+        <Card 
+        title="Create a Spritekit game" 
+        text="15 sections"
+        image={require('../images/spritekit.jpg')}
+        />
+        <Card 
+        title="Build an ARKit 2 app" 
+        text="10 sections"
+        image={require('../images/arkit2.jpg')}
+        />
+        <Card 
+        title="Sound Design with Cubase" 
+        text="11 sections"
+        image={require('../images/sound-design.jpg')}
+        />
+        <Card 
+        title="Motion Design in After Effects" 
+        text="15 sections"
+        image={require('../images/After_Effects.jpg')}
+        />
+        <Card 
+        title="Learn Swift" 
+        text="15 sections"
+        image={require('../images/swift2.jpg')}
+        />
+        <Card 
+        title="Swift UI for iOS 14" 
+        text="10 sections"
+        image={require('../images/Build_an_app_with_SwiftUI_part_4-aerate.jpg')}
+        />
+        <Card 
+        title="Learn Sketch" 
+        text="20 sections"
+        image={require('../images/sketch.jpg')}
+        />
+        </div>
+    </div>
+
+  <Section
+    image={require('../images/wallpaper2.jpg')}
+    logo={require('../images/logo-react.png')}
+    title="React for Designers"
+    text="Learn how to build a modern site using React and the most efficient libraries to get your site/product online. Get familiar with Grid CSS, animations, interactions, dynamic data with Contentful and deploying your site with Netlify."
+  />
+
+  <SectionCaption>12 Sections - 6 Hours</SectionCaption>
+  <SectionCellGroup>
+    {staticdata.cells.map(cell => (
+      <Cell 
+        title={cell.title}
+        image={cell.image}
+      />
+    ))}
+
+  </SectionCellGroup>
+
+  <div class="buttonz">
+    <Link to="/buy"><button>About React course</button></Link>
+  </div>
+
+
+  <Section2
+    image={require('../images/Topography0044.jpg')}
+    title2="Design for everyone"
+    title3="Coding for designers"
+  />
+
+
   </Layout>
 )
 
