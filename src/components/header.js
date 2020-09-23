@@ -3,6 +3,7 @@ import PropTypes from "prop-types"
 import React from "react"
 import logo from "../images/logo-designcode.svg"
 import './Header.css'
+import StripeCheckout from 'react-stripe-checkout'
 
 
 class Header extends React.Component {
@@ -36,7 +37,11 @@ class Header extends React.Component {
         <Link to="/courses">Courses</Link>
         <Link to="/downloads">Downloads</Link>
         <Link to="/workshops">Workshops</Link>
-        <Link to="/buy"><button>Buy</button></Link>
+        <StripeCheckout
+          amount={5000}
+          image="">
+          <button>Buy</button>
+        </StripeCheckout>
         </div>
       </div>
     )
